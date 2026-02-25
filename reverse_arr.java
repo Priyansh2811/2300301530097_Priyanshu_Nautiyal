@@ -1,29 +1,38 @@
-
+reversal of an array in java
 import java.util.Scanner;
 public class reverse_arr {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter the size of the array: ");
-        int size = scan.nextInt();
-        int[] arr = new int[size];
-        System.out.println("Enter the elements of the array: ");
-        for (int i = 0; i < size; i++) {
-            arr[i] = scan.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the size of the array:");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
         }
-        System.out.println("Original Array: ");
-        for (int i = 0; i < size; i++) {
-            System.out.print(arr[i] + " ");
+
+        reverseArray(arr);
+
+        System.out.println("Reversed array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
-        System.out.println();
-        // Reverse the array
-        for (int i = 0; i < size / 2; i++) {
-            int temp = arr[i];
-            arr[i] = arr[size - 1 - i];
-            arr[size - 1 - i] = temp;
-        }
-        System.out.println("Reversed Array: ");
-        for (int i = 0; i < size; i++) {
-            System.out.print(arr[i] + " ");
+    }
+
+    public static void reverseArray(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            // Swap elements at left and right indices
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            // Move towards the middle
+            left++;
+            right--;
         }
     }
 }
